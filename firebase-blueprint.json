@@ -1,0 +1,213 @@
+{
+  "entities": {
+    "GalleryImage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "GalleryImage",
+      "type": "object",
+      "description": "Represents metadata for an image displayed in the company's interactive gallery.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the GalleryImage entity."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "The URL to the actual image file stored in Firebase Storage.",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "An optional description or caption for the image."
+        },
+        "uploadedAt": {
+          "type": "string",
+          "description": "The date and time when the image was uploaded.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "imageUrl",
+        "uploadedAt"
+      ]
+    },
+    "CustomerReview": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CustomerReview",
+      "type": "object",
+      "description": "Stores a customer's testimonial or review about R & W Property Solutions' services.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the CustomerReview entity."
+        },
+        "reviewerName": {
+          "type": "string",
+          "description": "The name of the customer who submitted the review."
+        },
+        "rating": {
+          "type": "number",
+          "description": "The star rating given by the customer (1-5)."
+        },
+        "comment": {
+          "type": "string",
+          "description": "The textual feedback or comment provided by the customer."
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "The date and time when the review was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "reviewerName",
+        "rating",
+        "comment",
+        "submittedAt"
+      ]
+    },
+    "Lead": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Lead",
+      "type": "object",
+      "description": "Holds potential customer information collected via the AI Chatbot for follow-up.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Lead entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the interested individual."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The phone number of the lead for contact purposes."
+        },
+        "serviceNeeded": {
+          "type": "string",
+          "description": "A description of the service the lead is interested in."
+        },
+        "preferredBidTime": {
+          "type": "string",
+          "description": "The preferred date or time frame for receiving a bid or further contact."
+        },
+        "collectedAt": {
+          "type": "string",
+          "description": "The date and time when the lead information was collected.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "name",
+        "phoneNumber",
+        "serviceNeeded",
+        "collectedAt"
+      ]
+    },
+    "SiteAnalytics": {
+      "title": "SiteAnalytics",
+      "type": "object",
+      "description": "Stores analytics data for the website.",
+      "properties": {
+        "visitorCount": {
+          "type": "number",
+          "description": "Total number of page visitors."
+        }
+      },
+      "required": ["visitorCount"]
+    },
+    "user": {
+      "title": "user",
+      "type": "object",
+      "properties": {}
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/gallery_images/{galleryImageId}",
+        "definition": {
+          "entityName": "GalleryImage",
+          "schema": {
+            "$ref": "#/backend/entities/GalleryImage"
+          },
+          "description": "Stores metadata for all images displayed in the company's interactive gallery. All documents in this collection are publicly readable, and authenticated users can upload new images. Only administrators can edit or delete existing images.",
+          "params": [
+            {
+              "name": "galleryImageId",
+              "description": "The unique identifier for a specific gallery image document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/customer_reviews/{customerReviewId}",
+        "definition": {
+          "entityName": "CustomerReview",
+          "schema": {
+            "$ref": "#/backend/entities/CustomerReview"
+          },
+          "description": "Holds customer testimonials and reviews. All documents are publicly readable, and anonymous users can create new reviews via the submission form.",
+          "params": [
+            {
+              "name": "customerReviewId",
+              "description": "The unique identifier for a specific customer review document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/leads/{leadId}",
+        "definition": {
+          "entityName": "Lead",
+          "schema": {
+            "$ref": "#/backend/entities/Lead"
+          },
+          "description": "Contains sensitive information about potential customers collected via the AI Chatbot. Access (read/write) to this collection is strictly limited to authenticated administrators.",
+          "params": [
+            {
+              "name": "leadId",
+              "description": "The unique identifier for a specific lead document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/site_analytics/visitorCounter",
+        "definition": {
+          "entityName": "SiteAnalytics",
+          "schema": {
+            "$ref": "#/backend/entities/SiteAnalytics"
+          },
+          "description": "A singleton document for tracking site-wide analytics like visitor counts.",
+          "params": []
+        }
+      },
+      {
+        "path": "/roles_admin/{adminUid}",
+        "definition": {
+          "entityName": "user",
+          "schema": {
+            "$ref": "#/backend/entities/user"
+          },
+          "description": "A control collection used for Database-Backed Access Control (DBAC). Each document in this collection represents an administrator, where the document ID is the user's Firebase Authentication UID. Used to grant elevated permissions to specific users.",
+          "params": [
+            {
+              "name": "adminUid",
+              "description": "The Firebase Authentication UID of an administrator."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to be secure, scalable, and debuggable by strictly adhering to the core design principles. All data entities are placed in top-level collections to ensure Authorization Independence. This eliminates the need for hierarchical authorization dependencies (get() calls in security rules), which would otherwise break atomic operations and complicate debugging. For example, a `GalleryImage`'s permissions do not rely on any parent `User` document; instead, general admin roles determine write access.\n\nStructural Segregation is applied by having dedicated collections for `gallery_images`, `customer_reviews`, `leads`, and `site_analytics`. Each collection has a homogeneous security posture:\n\n*   `/gallery_images`: Publicly readable, admin-only writable.\n*   `/customer_reviews`: Publicly readable, publicly writable (for review submission).\n*   `/leads`: Publicly creatable, but admin-only readable and writable.\n*   `/site_analytics`: Publicly updatable (for counters), but admin-only readable.\n\nThis segregation simplifies security rules significantly, as the rules for each collection are straightforward and do not need complex conditional logic based on document content or relationships."
+  }
+}
