@@ -145,6 +145,8 @@ export default function Gallery() {
                       fill
                       className="object-cover"
                       unoptimized
+                      loading={project.id === 'trans-1' ? 'eager' : 'lazy'}
+                      priority={project.id === 'trans-1'}
                     />
                     <div className="absolute top-4 right-4 z-10 bg-emerald-600/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
                       {project.afterLabel}
@@ -163,6 +165,8 @@ export default function Gallery() {
                         fill
                         className="object-cover"
                         unoptimized
+                        loading={project.id === 'trans-1' ? 'eager' : 'lazy'}
+                        priority={project.id === 'trans-1'}
                       />
                     </div>
                     <div className="absolute top-4 left-4 z-10 bg-amber-600/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold shadow-md pointer-events-auto">
