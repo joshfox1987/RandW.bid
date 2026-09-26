@@ -151,12 +151,12 @@ export default function Gallery() {
                     </div>
                   </div>
 
-                  {/* Before Image (Clipped by slider position) */}
+                  {/* Before Image (Clipped by slider position via clipPath) */}
                   <div 
-                    className="absolute inset-0 overflow-hidden"
-                    style={{ width: `${splitPos}%` }}
+                    className="absolute inset-0 overflow-hidden pointer-events-none"
+                    style={{ clipPath: `polygon(0 0, ${splitPos}% 0, ${splitPos}% 100%, 0 100%)` }}
                   >
-                    <div className="absolute inset-0 w-[200%] sm:w-[1200px] h-full" style={{ width: '100vw', maxWidth: '600px' }}>
+                    <div className="absolute inset-0 h-full w-full">
                       <Image
                         src={project.beforeImage}
                         alt={project.beforeLabel}
@@ -165,7 +165,7 @@ export default function Gallery() {
                         unoptimized
                       />
                     </div>
-                    <div className="absolute top-4 left-4 z-10 bg-amber-600/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                    <div className="absolute top-4 left-4 z-10 bg-amber-600/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold shadow-md pointer-events-auto">
                       {project.beforeLabel}
                     </div>
                   </div>
