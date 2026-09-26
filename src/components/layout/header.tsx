@@ -10,21 +10,21 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 shadow-sm">
-      <div className="container mx-auto px-4 flex h-auto min-h-[5.5rem] items-center justify-between py-3">
-        <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3 group">
-            <Logo className="h-12 w-12 shrink-0 transition-transform group-hover:scale-105" />
+      <div className="container mx-auto px-3 sm:px-4 flex h-auto min-h-[5.2rem] items-center justify-between py-2.5">
+        <div className="flex items-center gap-2.5 sm:gap-3 pr-2">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
+            <Logo className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 transition-transform group-hover:scale-105" />
             <div className="flex flex-col leading-tight">
-              <span className="font-headline text-base sm:text-lg md:text-xl font-bold tracking-tight text-foreground">
+              <span className="font-headline text-sm sm:text-lg md:text-xl font-bold tracking-tight text-foreground">
                 R &amp; W Property Solutions
               </span>
-              <div className="flex flex-wrap items-center gap-2 mt-0.5">
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-amber-600 dark:text-amber-400">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                   Licensed General Contractor
                 </span>
                 <span className="text-muted-foreground text-[10px] hidden sm:inline">•</span>
-                <span className="text-[10px] font-semibold text-muted-foreground hidden sm:inline flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-emerald-600" /> Idaho License # RCE-XXXXX
+                <span className="text-[10px] font-semibold text-muted-foreground hidden sm:inline items-center gap-1">
+                  <ShieldCheck className="w-3 h-3 text-emerald-600 inline" /> Idaho License # RCE-XXXXX
                 </span>
               </div>
             </div>
