@@ -42,17 +42,18 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             </h1>
           </div>
 
-          {/* Clean, centered inline video player for stop motion 49ers.mp4 */}
-          <div className="w-full max-w-2xl mx-auto my-4 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900">
-            <video
-              src="/stop motion 49ers.mp4"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-auto object-cover max-h-[380px]"
-            />
+          {/* Clean, centered inline video player for 49ers-video.mp4 */}
+          <div className="w-full max-w-3xl mx-auto my-4 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900">
+            <video 
+              controls 
+              playsInline 
+              muted 
+              preload="metadata" 
+              className="w-full max-w-4xl mx-auto rounded-xl shadow-2xl border border-slate-700 aspect-video object-cover"
+            >
+              <source src="/49ers-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
 
           <div className="space-y-3">
