@@ -2,73 +2,71 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | R & W Property Solutions',
-  description: 'Privacy policy for R & W Property Solutions website visitors, Facebook users, and lead inquiries.',
+  title: 'Privacy Policy | J Fox Ink',
+  description: 'Privacy policy for J Fox Ink client inquiries, artwork files, and custom fabrication orders.',
 };
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-[100dvh] bg-background py-16 md:py-24">
-      <div className="container max-w-4xl px-4 md:px-6">
-        <Link href="/" className="text-sm font-semibold text-primary underline-offset-4 hover:underline">
-          Back to home
+    <main className="min-h-screen bg-[#070A0F] text-slate-200 py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-4 md:px-6">
+        <Link
+          href="/"
+          className="text-xs font-mono text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5"
+        >
+          ← Return to J Fox Ink
         </Link>
-        <div className="mt-6 space-y-8">
-          <header className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">R &amp; W Property Solutions</p>
-            <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Privacy Policy</h1>
-            <p className="text-muted-foreground md:text-lg">
-              This policy explains what information R&amp;W Property Solutions may collect through this website, Facebook, Messenger, phone, email, and lead forms, and how that information is used to respond to service requests.
+        <div className="mt-8 space-y-8">
+          <header className="space-y-3 pb-6 border-b border-white/10">
+            <p className="text-xs font-mono uppercase tracking-widest text-cyan-400">
+              J Fox Ink Atelier
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-display font-extrabold text-white">
+              Privacy Policy
+            </h1>
+            <p className="text-sm text-slate-400">
+              This policy explains how J Fox Ink handles your design files, artwork specs, and contact details for custom vinyl decals, apparel printing, and 3D digital fabrication.
             </p>
           </header>
 
           <section className="space-y-3">
-            <h2 className="font-headline text-2xl font-bold">Information we may collect</h2>
-            <p className="text-muted-foreground">
-              We may collect your name, phone number, email address, property location, photos you provide, service details, message history, and any scheduling or project notes you send to us.
+            <h2 className="text-lg font-display font-bold text-white">1. Information We Collect</h2>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              When you submit a project spec through the Ink Lab or email us, we collect your name, email address, contact handle, project specifications, and vector design artwork assets. We do not sell or monetize personal information.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-headline text-2xl font-bold">How we use information</h2>
-            <ul className="list-disc space-y-2 pl-6 text-muted-foreground">
-              <li>Respond to questions and service inquiries.</li>
-              <li>Evaluate projects and prepare job-specific bids.</li>
-              <li>Schedule calls, site visits, and follow-up messages.</li>
-              <li>Maintain internal records of leads, approvals, and completed work.</li>
-              <li>Improve customer support, website content, and business operations.</li>
-            </ul>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-headline text-2xl font-bold">Facebook and Messenger</h2>
-            <p className="text-muted-foreground">
-              If you contact R&amp;W Property Solutions through Facebook or Messenger, your messages and related profile information may be used to respond to your request, qualify the project, and coordinate next steps with the business owner. We do not sell this information.
+            <h2 className="text-lg font-display font-bold text-white">2. Artwork Intellectual Property</h2>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              All proprietary artwork, vector brand assets, logos, and custom graphics provided by clients remain 100% the intellectual property of the respective client. J Fox Ink only uses your vector files for production, proofing, and fabrication purposes.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-headline text-2xl font-bold">Sharing of information</h2>
-            <p className="text-muted-foreground">
-              Information is used internally for business operations and customer service. It may be shared with service providers that support the website, analytics, hosting, messaging, or scheduling only as needed to operate the business.
+            <h2 className="text-lg font-display font-bold text-white">3. LocalStorage & Client-Side Privacy</h2>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Our website uses client-side LocalStorage exclusively to preserve your active Ink Lab project drafts within your browser. No third-party data tracking brokers receive your spec drafts.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-headline text-2xl font-bold">Retention</h2>
-            <p className="text-muted-foreground">
-              We keep inquiry and project records for as long as needed to respond to requests, support active projects, document business activity, and comply with legal or operational requirements.
+            <h2 className="text-lg font-display font-bold text-white">4. Inquiries & Data Rights</h2>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              To request a copy or deletion of your project records or email inquiries, contact Josh Fox directly at{' '}
+              <a
+                href="mailto:orders@jfox.ink"
+                className="text-cyan-400 hover:underline font-mono"
+              >
+                orders@jfox.ink
+              </a>
+              .
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="font-headline text-2xl font-bold">Contact and requests</h2>
-            <p className="text-muted-foreground">
-              To ask questions about this policy or request review or deletion of your submitted contact data, email <a className="font-semibold text-primary underline-offset-4 hover:underline" href="mailto:RnWpropertyrepair@gmail.com">RnWpropertyrepair@gmail.com</a> or call <a className="font-semibold text-primary underline-offset-4 hover:underline" href="tel:208-831-6824">(208) 831-6824</a>.
-            </p>
-          </section>
-
-          <p className="text-sm text-muted-foreground">Last updated: May 9, 2026</p>
+          <p className="text-xs font-mono text-slate-500 pt-6 border-t border-white/10">
+            Last updated: October 2026 · J Fox Ink (jfox.ink)
+          </p>
         </div>
       </div>
     </main>
